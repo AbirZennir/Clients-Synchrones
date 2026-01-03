@@ -1,32 +1,29 @@
-package com.example.voiture;
+package com.tp.voiture.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+public class Car {
+    private Long id;
+    private String marque;
+    private String modele;
+    private Long clientId;
 
-@RestController
-public class CarController {
+    public Car() {}
 
-    @GetMapping("/api/cars/byClient/{clientId}")
-    public Car getCar(@PathVariable Long clientId) {
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return new Car(10L, "Toyota", "Yaris", clientId);
+    public Car(Long id, String marque, String modele, Long clientId) {
+        this.id = id;
+        this.marque = marque;
+        this.modele = modele;
+        this.clientId = clientId;
     }
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    static class Car {
-        private Long id;
-        private String marque;
-        private String modele;
-        private Long clientId;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getMarque() { return marque; }
+    public void setMarque(String marque) { this.marque = marque; }
+
+    public String getModele() { return modele; }
+    public void setModele(String modele) { this.modele = modele; }
+
+    public Long getClientId() { return clientId; }
+    public void setClientId(Long clientId) { this.clientId = clientId; }
 }
